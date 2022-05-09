@@ -3,16 +3,10 @@ const app = express();
 const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
-app.use(cors({
-    origin: [
-      'http://localhost:3000',
-      'https://localhost:4200',
-      'https://localhost:5500',
-      'http://127.0.0.1:5500',
-      'https://upgrade-jobs-app.vercel.app',
-    ],
-    credentials: true,
-  }));
+const router = require('./router');
+
+app.use(cors());
+app.use(router)
 
 const server = http.createServer(app);
 
